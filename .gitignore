@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+.metadata/
+.settings/
+*.ld
+
+Debug/
