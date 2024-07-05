@@ -9,12 +9,11 @@
 
 UsartHandler::UsartHandler(UART_HandleTypeDef* _handler) {
 	handler = _handler;
-
 }
 
 void UsartHandler::Communicate()
 {
-	const char message[] = "Hello world!\r\n";
+	const char message[] = "Hi STM32H723 :) !\r\n";
 	HAL_UART_Transmit(handler, (uint8_t*)message, strlen(message), HAL_MAX_DELAY);
 }
 
