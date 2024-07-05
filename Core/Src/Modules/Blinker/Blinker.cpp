@@ -5,7 +5,7 @@
  *      Author: Michin
  */
 
-#include "Blinker.h"
+#include "Blinker.hpp"
 
 Blinker::Blinker() {
 	// TODO Auto-generated constructor stub
@@ -40,6 +40,10 @@ void Blinker::Blink()
 	HAL_Delay(200);
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_RESET);
 	HAL_Delay(200);
+
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_SET);
+
+
 }
 
 Blinker::~Blinker() {

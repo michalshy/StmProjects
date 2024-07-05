@@ -13,7 +13,7 @@
 /*
  * First project which is blinking of LED's
  */
-class Blinker {
+class Blinker{
 public:
 	Blinker();
 
