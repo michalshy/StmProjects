@@ -9,18 +9,20 @@
 #include "Modules/Blinker/Blinker.hpp"
 #include "Modules/ConnectUsart/UsartHandler.hpp"
 
-
+static Blinker blink = Blinker();
+static UsartHandler handler;
 
 // Main Cpp event loop to run application
 void EventLoopCpp()
 {
-	Blinker blink = Blinker();
 	blink.Blink();
+	handler.Reception();
+	handler.HandleLED();
 }
 
 void Init(UART_HandleTypeDef* hand)
 {
-	UsartHandler handler = UsartHandler(hand);
+	handler = UsartHandler(hand);
 	handler.Communicate();
 }
 

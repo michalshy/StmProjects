@@ -41,7 +41,7 @@ void Blinker::Blink()
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_RESET);
 	HAL_Delay(200);
 
-	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_SET);
+
 
 
 }
