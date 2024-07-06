@@ -30,7 +30,7 @@ void UsartHandler::Reception()
 	HAL_UART_Receive(handler, &value, 1, HAL_MAX_DELAY);
 	message = value;
 	char c = message;
-	HAL_UART_Transmit_IT(handler, (uint8_t*)&c, 1);
+	Print(message);
 }
 
 void UsartHandler::HandleLED()
@@ -44,6 +44,13 @@ void UsartHandler::HandleLED()
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_RESET);
 	}
 }
+
+bool UsartHandler::Print(char buff)
+{
+	HAL_UART_Transmit(handler, (uint8_t*)&buff, 1, HAL_MAX_DELAY);
+	return 1;
+}
+
 
 UsartHandler::~UsartHandler() {
 	// TODO Auto-generated destructor stub

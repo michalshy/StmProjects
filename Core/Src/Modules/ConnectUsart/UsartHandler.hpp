@@ -12,6 +12,7 @@
 #include "../Blinker/Blinker.hpp"
 #include <string>
 #include <string.h>
+#include <stdio.h>
 
 
 class UsartHandler {
@@ -20,12 +21,12 @@ class UsartHandler {
 public:
 	UsartHandler() = default;
 	UsartHandler(UART_HandleTypeDef* _handler);
-
 	void Communicate();
 	void HandleLED();
 	void Reception();
-	void ResetMessage();
 	virtual ~UsartHandler();
+	void ResetMessage();
+	bool Print(char buff);
 };
 
 #endif /* SRC_MODULES_CONNECTUSART_USARTHANDLER_H_ */
