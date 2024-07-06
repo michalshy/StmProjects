@@ -32,6 +32,18 @@ bool Logger::PrintLn(const char buff[])
 	return true;
 }
 
+bool Logger::PrintLn(const char buff[], const char msg[])
+{
+	char* TotalLine{ new char[strlen(buff) + strlen(msg) + 1] };
+	TotalLine = strcpy(TotalLine, buff);
+	TotalLine = strcat(TotalLine, msg);
+
+	HAL_UART_Transmit(handler, (uint8_t*)TotalLine, strlen(TotalLine), HAL_MAX_DELAY);
+	PrintChar('\r');
+	PrintChar('\n');
+	return true;
+}
+
 bool Logger::D(const char buff[])
 {
 	return false;
