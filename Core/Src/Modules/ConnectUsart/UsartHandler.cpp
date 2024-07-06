@@ -18,8 +18,7 @@ void UsartHandler::Reception()
 	uint8_t value;
 	HAL_UART_Receive(handler, &value, 1, HAL_MAX_DELAY);
 	message = value;
-	const char* t = &message;
-	log->PrintLn("Received Packet");
+	log->D("Received byte");
 }
 
 void UsartHandler::HandleLED()

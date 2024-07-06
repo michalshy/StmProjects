@@ -22,7 +22,6 @@ public:
 	bool E(const char buff[]);
 	bool Print(const char buff[]);
 	bool PrintLn(const char buff[]);
-	bool PrintLn(const char buff[], const char msg[]);
 	virtual ~Logger();
 protected:
 	bool PrintChar(const char buff);
