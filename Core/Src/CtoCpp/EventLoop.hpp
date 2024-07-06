@@ -8,10 +8,7 @@
 #ifndef EVENTLOOP_HPP_
 #define EVENTLOOP_HPP_
 
-
 #include "stm32h7xx_hal.h"
-
-
 
 
 

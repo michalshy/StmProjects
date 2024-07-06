@@ -11,16 +11,17 @@
 #include "stm32h7xx_hal.h"
 #include "../Blinker/Blinker.hpp"
 #include <string>
-#include <string.h>
+#include "../Logger/Logger.hpp"
 #include <stdio.h>
 
 
 class UsartHandler {
 	UART_HandleTypeDef* handler = nullptr;
+	Logger * log;
 	char message;
 public:
 	UsartHandler() = default;
-	UsartHandler(UART_HandleTypeDef* _handler);
+	UsartHandler(UART_HandleTypeDef* _handler, Logger * _log);
 	void Communicate();
 	void HandleLED();
 	void Reception();

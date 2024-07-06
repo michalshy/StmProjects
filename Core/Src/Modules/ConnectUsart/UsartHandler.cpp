@@ -7,8 +7,10 @@
 
 #include "UsartHandler.hpp"
 
-UsartHandler::UsartHandler(UART_HandleTypeDef* _handler) {
+
+UsartHandler::UsartHandler(UART_HandleTypeDef* _handler, Logger * _log) {
 	handler = _handler;
+	log = _log;
 }
 
 void UsartHandler::Communicate()
@@ -29,8 +31,6 @@ void UsartHandler::Reception()
 	uint8_t value;
 	HAL_UART_Receive(handler, &value, 1, HAL_MAX_DELAY);
 	message = value;
-	char c = message;
-	Print(message);
 }
 
 void UsartHandler::HandleLED()
@@ -43,12 +43,6 @@ void UsartHandler::HandleLED()
 	{
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_RESET);
 	}
-}
-
-bool UsartHandler::Print(char buff)
-{
-	HAL_UART_Transmit(handler, (uint8_t*)&buff, 1, HAL_MAX_DELAY);
-	return 1;
 }
 
 
