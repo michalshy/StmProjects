@@ -14,7 +14,7 @@
 
 class Engine {
 	UART_HandleTypeDef* handler;
-	Blinker blink = Blinker();
+	Blinker blink;
 	UsartHandler uartCom;
 	Logger log;
 public:

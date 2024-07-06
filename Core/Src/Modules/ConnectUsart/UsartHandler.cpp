@@ -13,19 +13,6 @@ UsartHandler::UsartHandler(UART_HandleTypeDef* _handler, Logger * _log) {
 	log = _log;
 }
 
-void UsartHandler::Communicate()
-{
-	const char buff[] = "Hi STM32H723 :) !\r\n";
-	HAL_UART_Transmit(handler, (uint8_t*)buff, strlen(buff), HAL_MAX_DELAY);
-}
-
-void UsartHandler::ResetMessage()
-{
-	const char buff[] = "Reset Message!\r\n";
-	HAL_UART_Transmit(handler, (uint8_t*)buff, strlen(buff), HAL_MAX_DELAY);
-}
-
-
 void UsartHandler::Reception()
 {
 	uint8_t value;

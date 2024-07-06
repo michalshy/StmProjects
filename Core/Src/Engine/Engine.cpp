@@ -11,6 +11,7 @@ Engine::Engine(UART_HandleTypeDef* _handler)
 {
 	handler = _handler;
 	log = Logger(handler);
+	blink = Blinker(&log);
 	uartCom = UsartHandler(handler, &log);
 }
 

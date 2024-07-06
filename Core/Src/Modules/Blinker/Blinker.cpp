@@ -7,9 +7,9 @@
 
 #include "Blinker.hpp"
 
-Blinker::Blinker() {
-	// TODO Auto-generated constructor stub
-
+Blinker::Blinker(Logger * _log)
+{
+	log = _log;
 }
 
 /*

@@ -17,17 +17,14 @@
 
 class UsartHandler {
 	UART_HandleTypeDef* handler = nullptr;
-	Logger * log;
+	Logger * log = nullptr;
 	char message;
 public:
 	UsartHandler() = default;
 	UsartHandler(UART_HandleTypeDef* _handler, Logger * _log);
-	void Communicate();
 	void HandleLED();
 	void Reception();
 	virtual ~UsartHandler();
-	void ResetMessage();
-	bool Print(char buff);
 };
 
 #endif /* SRC_MODULES_CONNECTUSART_USARTHANDLER_H_ */
