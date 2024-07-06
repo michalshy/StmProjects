@@ -16,13 +16,14 @@ class Logger {
 public:
 	Logger() = default;
 	Logger(UART_HandleTypeDef* _handler);
-	bool D(char buff[]);
-	bool W(char buff[]);
-	bool E(char buff[]);
-	bool Print(char buff[]);
+	bool D(const char buff[]);
+	bool W(const char buff[]);
+	bool E(const char buff[]);
+	bool Print(const char buff[]);
+	bool PrintLn(const char buff[]);
 	virtual ~Logger();
 protected:
-	bool PrintChar(char buff);
+	bool PrintChar(const char buff);
 };
 
 

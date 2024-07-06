@@ -14,9 +14,9 @@
 
 class Engine {
 	UART_HandleTypeDef* handler;
-	Blinker blink;
-	UsartHandler uartCom;
-	Logger log;
+	Logger* log = nullptr;
+	Blinker* blink = nullptr;
+	UsartHandler* uartCom = nullptr;
 public:
 	Engine() = default;
 	Engine(UART_HandleTypeDef* _handler);

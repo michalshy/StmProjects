@@ -12,32 +12,37 @@ Logger::Logger(UART_HandleTypeDef* _handler) {
 	handler = _handler;
 }
 
-bool Logger::PrintChar(char buff)
+bool Logger::PrintChar(const char buff)
 {
 	HAL_UART_Transmit(handler, (uint8_t*)&buff, 1, HAL_MAX_DELAY);
-	return 1;
-}
-
-bool Logger::Print(char buff[])
-{
-	for(size_t i = 0; i < strlen(buff); i++)
-	{
-		PrintChar(buff[i]);
-	}
 	return true;
 }
 
-bool Logger::D(char buff[])
+bool Logger::Print(const char buff[])
+{
+	HAL_UART_Transmit(handler, (uint8_t*)buff, strlen(buff), HAL_MAX_DELAY);
+	return true;
+}
+
+bool Logger::PrintLn(const char buff[])
+{
+	HAL_UART_Transmit(handler, (uint8_t*)buff, strlen(buff), HAL_MAX_DELAY);
+	PrintChar('\r');
+	PrintChar('\n');
+	return true;
+}
+
+bool Logger::D(const char buff[])
 {
 	return false;
 }
 
-bool Logger::W(char buff[])
+bool Logger::W(const char buff[])
 {
 	return false;
 }
 
-bool Logger::E(char buff[])
+bool Logger::E(const char buff[])
 {
 	return false;
 }
