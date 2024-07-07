@@ -16,9 +16,15 @@ UsartHandler::UsartHandler(UART_HandleTypeDef* _handler, Logger * _log) {
 void UsartHandler::Reception()
 {
 	uint8_t value;
-	HAL_UART_Receive(handler, &value, 1, HAL_MAX_DELAY);
-	message = value;
-	log->D("Received byte");
+	if(HAL_UART_Receive(handler, &value, 1, 0) == HAL_OK)
+	{
+		message = value;
+		log->D("Received byte");
+	}
+	else
+	{
+		log->D("Waiting for value");
+	}
 }
 
 void UsartHandler::HandleLED()

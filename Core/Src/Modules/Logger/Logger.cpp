@@ -27,28 +27,35 @@ bool Logger::Print(const char buff[])
 
 bool Logger::PrintLn(const char buff[])
 {
-	HAL_UART_Transmit(handler, (uint8_t*)buff, strlen(buff), HAL_MAX_DELAY);
-	PrintChar('\r');
-	PrintChar('\n');
+	uint8_t size = strlen(buff) + 3;
+	char t[size];
+	Concat(buff, "\r\n", t);
+	HAL_UART_Transmit(handler, (uint8_t*)t, strlen(t), HAL_MAX_DELAY);
 	return true;
 }
 
 bool Logger::D(const char buff[])
 {
-	Print("[     DEBUG     ]");
-	PrintLn(buff);
+	char t[(strlen(buff) + strlen(debug) + 1)];
+	Concat(debug, buff, t);
+	PrintLn(t);
+	return true;
 }
 
 bool Logger::W(const char buff[])
 {
-	Print("[    WARNING    ]");
-	PrintLn(buff);
+	char t[(strlen(buff) + strlen(warning) + 1)];
+	Concat(warning, buff, t);
+	PrintLn(t);
+	return true;
 }
 
 bool Logger::E(const char buff[])
 {
-	Print("[     ERROR     ]");
-	PrintLn(buff);
+	char t[(strlen(buff) + strlen(error) + 1)];
+	Concat(error, buff, t);
+	PrintLn(t);
+	return true;
 }
 
 Logger::~Logger() {

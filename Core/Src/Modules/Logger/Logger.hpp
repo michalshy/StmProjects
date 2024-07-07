@@ -9,11 +9,14 @@
 #define SRC_MODULES_LOGGER_LOGGER_HPP_
 
 #include "stm32h7xx_hal.h"
-#include <string.h>
-#include <cstring>
+
+#include "../Utils.hpp"
 
 class Logger {
 	UART_HandleTypeDef* handler = nullptr;
+	const char* debug = "[     DEBUG     ]\t";
+	const char* warning = "[    WARNING    ]\t";
+	const char* error = "[     ERROR     ]\t";
 public:
 	Logger() = default;
 	Logger(UART_HandleTypeDef* _handler);
