@@ -33,6 +33,5 @@
 
 .metadata/
 .settings/
-*.ld
 
 Debug/
