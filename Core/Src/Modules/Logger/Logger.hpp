@@ -12,6 +12,10 @@
 
 #include "../Utils.hpp"
 
+/**
+ * Transform this module into static module, it should always work on the same UART configured in the code
+ */
+
 class Logger {
 	UART_HandleTypeDef* handler = nullptr;
 	const char* debug = "[     DEBUG     ]\t";

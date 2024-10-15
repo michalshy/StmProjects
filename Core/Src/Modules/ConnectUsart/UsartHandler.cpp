@@ -19,11 +19,11 @@ void UsartHandler::Reception()
 	if(HAL_UART_Receive(handler, &value, 1, 0) == HAL_OK)
 	{
 		message = value;
-		log->D("Received byte");
+		//log->D("Received byte");
 	}
 	else
 	{
-		log->D("Waiting for value");
+		//log->D("Waiting for value");
 	}
 }
 

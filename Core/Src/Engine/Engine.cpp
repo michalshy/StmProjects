@@ -10,21 +10,20 @@
 Engine::Engine(UART_HandleTypeDef* _handler)
 {
 	handler = _handler;
-	log = new Logger(handler);
-	blink = new Blinker(log);
-	uartCom = new UsartHandler(handler, log);
+
+	log = Logger(handler);
+	blink = Blinker(&log);
+	uartCom = UsartHandler(handler, &log);
+
+	mInit = true;
 }
 
 void Engine::Loop()
 {
-	blink->Blink();
-	uartCom->Reception();
-	uartCom->HandleLED();
+	if(mInit)
+	{
+		blink.Blink();
+		uartCom.Reception();
+		uartCom.HandleLED();
+	}
 }
-
-Engine::~Engine() {
-	delete log;
-	delete blink;
-	delete uartCom;
-}
-

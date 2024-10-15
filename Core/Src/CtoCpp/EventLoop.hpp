@@ -10,8 +10,6 @@
 
 #include "stm32h7xx_hal.h"
 
-
-
 void Init(UART_HandleTypeDef* hand);
 void EventLoopCpp();   // Cpp function to call into main event loop
 

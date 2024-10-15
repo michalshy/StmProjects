@@ -13,15 +13,16 @@
 #include "../Modules/Logger/Logger.hpp"
 
 class Engine {
-	UART_HandleTypeDef* handler;
-	Logger* log = nullptr;
-	Blinker* blink = nullptr;
-	UsartHandler* uartCom = nullptr;
+	UART_HandleTypeDef* handler = nullptr;
+	Logger log;
+	Blinker blink;
+	UsartHandler uartCom;
+
+	bool mInit = false;
 public:
 	Engine() = default;
 	Engine(UART_HandleTypeDef* _handler);
 	void Loop();
-	virtual ~Engine();
 };
 
 #endif /* SRC_ENGINE_HPP_ */

@@ -7,12 +7,14 @@
 
 #include "EventLoop.hpp"
 #include "../Engine/Engine.hpp"
+#include <vector>
 
+static UART_HandleTypeDef * handler;
 static Engine eng;
 
-void Init(UART_HandleTypeDef* hand)
+void InitCpp()
 {
-	eng = Engine(hand);
+	eng = Engine(handler);
 }
 
 // Main Cpp event loop to run application
@@ -36,6 +38,7 @@ extern "C"
 {
     void InitC(UART_HandleTypeDef * hand)
     {
-    	Init(hand);
+    	handler = hand;
+    	InitCpp();
     }
 }
