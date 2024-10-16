@@ -15,10 +15,8 @@
  * First project which is blinking of LED's
  */
 class Blinker{
-	Logger* log = nullptr;
 public:
 	Blinker() = default;
-	Blinker(Logger* _log);
 
 	void Blink();
 

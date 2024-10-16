@@ -7,11 +7,6 @@
 
 #include "Blinker.hpp"
 
-Blinker::Blinker(Logger * _log)
-{
-	log = _log;
-}
-
 /*
  * Function which implements everything connected to blinking
  */

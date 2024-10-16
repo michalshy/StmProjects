@@ -7,25 +7,24 @@
 
 #include "Logger.hpp"
 
-Logger::Logger(UART_HandleTypeDef* _handler) {
-	// TODO Auto-generated constructor stub
-	handler = _handler;
-}
+constexpr char* debug = "[     DEBUG     ]\t";
+constexpr char* warning = "[    WARNING    ]\t";
+constexpr char* error = "[     ERROR     ]\t";
 
-bool Logger::PrintChar(const char buff)
+bool PrintChar(UART_HandleTypeDef* handler, const char buff)
 {
 	HAL_UART_Transmit(handler, (uint8_t*)&buff, 1, HAL_MAX_DELAY);
 	return true;
 }
 
-bool Logger::Print(const char buff[])
+bool Logger::Print(UART_HandleTypeDef* handler, const char buff[])
 {
 	HAL_UART_Transmit(handler, (uint8_t*)buff, strlen(buff), HAL_MAX_DELAY);
-	PrintChar('\t');
+	PrintChar(handler, '\t');
 	return true;
 }
 
-bool Logger::PrintLn(const char buff[])
+bool Logger::PrintLn(UART_HandleTypeDef* handler, const char buff[])
 {
 	uint8_t size = strlen(buff) + 3;
 	char t[size];
@@ -34,31 +33,28 @@ bool Logger::PrintLn(const char buff[])
 	return true;
 }
 
-bool Logger::D(const char buff[])
+bool Logger::D(UART_HandleTypeDef* handler, const char buff[])
 {
 	char t[(strlen(buff) + strlen(debug) + 1)];
 	Concat(debug, buff, t);
-	PrintLn(t);
+	Logger::PrintLn(handler, t);
 	return true;
 }
 
-bool Logger::W(const char buff[])
+bool Logger::W(UART_HandleTypeDef* handler, const char buff[])
 {
 	char t[(strlen(buff) + strlen(warning) + 1)];
 	Concat(warning, buff, t);
-	PrintLn(t);
+	Logger::PrintLn(handler, t);
 	return true;
 }
 
-bool Logger::E(const char buff[])
+bool Logger::E(UART_HandleTypeDef* handler, const char buff[])
 {
 	char t[(strlen(buff) + strlen(error) + 1)];
 	Concat(error, buff, t);
-	PrintLn(t);
+	Logger::PrintLn(handler, t);
 	return true;
 }
 
-Logger::~Logger() {
-	// TODO Auto-generated destructor stub
-}
 

@@ -17,21 +17,12 @@
  */
 
 class Logger {
-	UART_HandleTypeDef* handler = nullptr;
-	const char* debug = "[     DEBUG     ]\t";
-	const char* warning = "[    WARNING    ]\t";
-	const char* error = "[     ERROR     ]\t";
 public:
-	Logger() = default;
-	Logger(UART_HandleTypeDef* _handler);
-	bool D(const char buff[]);
-	bool W(const char buff[]);
-	bool E(const char buff[]);
-	bool Print(const char buff[]);
-	bool PrintLn(const char buff[]);
-	virtual ~Logger();
-protected:
-	bool PrintChar(const char buff);
+	static bool D(UART_HandleTypeDef* handler, const char buff[]);
+	static bool W(UART_HandleTypeDef* handler, const char buff[]);
+	static bool E(UART_HandleTypeDef* handler, const char buff[]);
+	static bool Print(UART_HandleTypeDef* handler, const char buff[]);
+	static bool PrintLn(UART_HandleTypeDef* handler, const char buff[]);
 };
 
 

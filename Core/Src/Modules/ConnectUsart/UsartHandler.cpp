@@ -8,9 +8,8 @@
 #include "UsartHandler.hpp"
 
 
-UsartHandler::UsartHandler(UART_HandleTypeDef* _handler, Logger * _log) {
+UsartHandler::UsartHandler(UART_HandleTypeDef* _handler) {
 	handler = _handler;
-	log = _log;
 }
 
 void UsartHandler::Reception()
@@ -19,11 +18,11 @@ void UsartHandler::Reception()
 	if(HAL_UART_Receive(handler, &value, 1, 0) == HAL_OK)
 	{
 		message = value;
-		//log->D("Received byte");
+		Logger::D(handler, "Received byte");
 	}
 	else
 	{
-		//log->D("Waiting for value");
+		Logger::D(handler, "Waiting for value");
 	}
 }
 
